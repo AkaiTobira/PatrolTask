@@ -38,12 +38,12 @@ public class UnitPatrolBehaviour : MonoBehaviour
         }
     }
 
-    public void AddPatrolPoint( NavPoint newPoint ){
+    public void AddPatrolPoint( ref NavPoint newPoint ){
         if( newPoint == null ){
             Debug.LogWarning("New NavPoint is null");
             return;
         }
         _currentDestination = newPoint;
-        enabled = true;
+        if(enabled == false) enabled = true;
     }
 }
