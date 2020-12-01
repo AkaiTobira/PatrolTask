@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class UnitPatrolBehaviour : MonoBehaviour
 {
-    [SerializeField] private NavPoint[] _patrolPoints;
     [SerializeField] private NavPoint _currentDestination;
     [SerializeField] private NavMeshAgent _agent;
 
@@ -37,5 +36,14 @@ public class UnitPatrolBehaviour : MonoBehaviour
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f){
             GetNextPatrolPoint();
         }
+    }
+
+    public void AddPatrolPoint( NavPoint newPoint ){
+        if( newPoint == null ){
+            Debug.LogWarning("New NavPoint is null");
+            return;
+        }
+        _currentDestination = newPoint;
+        enabled = true;
     }
 }
